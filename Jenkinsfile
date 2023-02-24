@@ -1,11 +1,12 @@
 pipeline {
     agent any
-
+    triggers { pollSCM('* * * * *') }
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/SunF0x/Git_Jenkins_job.git'
+                sh "ls"
+                // git branch: 'main', url: 'https://github.com/SunF0x/Git_Jenkins_job.git'
                 sh "ls"
                 sh "chmod +x hello_from_sh"
                 sh "./hello_from_sh"
