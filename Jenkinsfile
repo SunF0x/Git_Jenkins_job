@@ -7,9 +7,14 @@ pipeline {
                 sh "ls"
                 sh "chmod +x hello_from_sh"
                 sh "./hello_from_sh"
-                echo 'Successfully automated!'
+                echo "Successfully automated!"
+                echo "Text to artifact" >> file.txt
             }
-
+        }
+        stage('Test') {
+            steps {
+                sh "cat file.txt"
+            }
         }
     }
 }
