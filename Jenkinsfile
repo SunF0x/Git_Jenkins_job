@@ -7,6 +7,7 @@ pipeline {
                 sh "ls"
                 sh "chmod +x hello_from_sh"
                 sh "./hello_from_sh"
+                echo 'Successfully automated!'
             }
 
         }
