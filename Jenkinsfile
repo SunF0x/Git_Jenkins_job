@@ -8,7 +8,7 @@ pipeline {
                 sh "chmod +x hello_from_sh"
                 sh "./hello_from_sh"
                 echo "Successfully automated!"
-                sh "echo Text to artifact >> file.txt"
+                sh "echo Text to artifact2 >> file.txt"
             }
         }
         stage('Test') {
