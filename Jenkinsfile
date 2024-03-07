@@ -1,8 +1,14 @@
 pipeline {
-    agent any
+    agent any //agent { node { label 'sdCloud_docker_deploy' } }
     triggers { pollSCM('H/5 * * * *') }
     stages {
-        stage('Build') {
+        stage('Preparation') {
+            steps {
+                step([$class: 'WsCleanup'])
+                checkout scm
+            }
+        }
+        stage('Build application') {
             steps {
                 sh "ls"
                 sh "chmod +x hello_from_sh"
@@ -11,7 +17,7 @@ pipeline {
                 sh "echo Text to artifact2 >> file.txt"
             }
         }
-        stage('Test') {
+        stage('Deploy artifacts') {
             steps {
                 sh "cat file.txt"
             }
